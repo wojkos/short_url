@@ -1,3 +1,5 @@
 class PageController < ApplicationController
-  def index; end
+  def index 
+    @url = Url.new
+  end
 end
