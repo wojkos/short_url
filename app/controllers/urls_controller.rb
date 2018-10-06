@@ -7,7 +7,8 @@ class UrlsController < ApplicationController
   def create
     @url = Url.new(url_params)
     if @url.save
-      p 'SAVE'
+      render js: "document.getElementById('short_url_box').classList.remove('d-none');
+        document.getElementById('short_url_box').innerText='#{@url.url_short}';"
     else
       p 'ERROR'
     end
