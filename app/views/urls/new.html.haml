@@ -1,6 +1,9 @@
 %main.inner.cover{:role => "main"}
-  %h1.cover-heading New URL.
-  %p.lead Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.
+  %h1.cover-heading Short your URL
+  %p.lead and send it!
   %p
     = render 'shared/url_form', url: @url
-  %p#short_url_box.d-none
+  %div#short_url_box.d-none
+    %p#short_url
+    %button{ onclick:"myFunction()" }
+      COPY LINK

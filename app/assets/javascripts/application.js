@@ -24,3 +24,10 @@ function removeFlash() {
         }
     },2000);
 };
+
+function myFunction() {
+    var range = document.body.createRange();
+    range.moveToElementText(document.getElementById("short_url"));
+    range.select().createTextRange();
+    document.execCommand("copy"); 
+  };

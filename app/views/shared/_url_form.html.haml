@@ -1,5 +1,5 @@
 = form_with(model: url) do |f|
   .form-group
-    = f.text_field :url_orginal
+    = f.text_field :url_orginal, class: 'form-control'
   .form-group
     = f.submit 'Create short link', class: 'btn btn-secondary btn-lg', onclick: 'removeFlash()'

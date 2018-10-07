@@ -6,18 +6,26 @@ class UrlsController < ApplicationController
 
   def create
     @url = Url.new(url_params)
-    if @url.save
-      render js: "document.getElementById('short_url_box').classList.remove('d-none');
-        document.getElementById('short_url_box').innerText='#{@url.url_short}';"
+    @url.clean_url
+
+    if @url.new_link?
+      if @url.save
+        render js: "document.getElementById('short_url_box').classList.remove('d-none');
+          document.getElementById('short_url').innerText='http://#{request.host}/#{@url.url_short}/';"
+      else
+        flash[:alert] = @url.errors.full_messages
+        redirect_to :root
+      end
     else
-      flash[:alert] = @url.errors.full_messages
-      redirect_to :root
+      @url_in_database =Url.find_by_url_clean(@url.url_clean)
+      render js: "document.getElementById('short_url_box').classList.remove('d-none');
+      document.getElementById('short_url').innerText='http://#{request.host}/#{@url_in_database.url_short}/';"
     end
   end
 
   def show
     @url = Url.find_by_url_short(params[:url_short])
-    redirect_to @url.url_orginal
+    redirect_to "http://#{@url.url_clean}/"
   end
 
   private
