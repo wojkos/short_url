@@ -13,3 +13,14 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+
+function removeFlash() {
+    setTimeout(function(){
+        var pAlert =  document.getElementById('alert');        
+        if (pAlert.innerHTML.length >0) {
+            setTimeout(function(){ 
+                pAlert.remove();
+            }, 5000);
+        }
+    },2000);
+};

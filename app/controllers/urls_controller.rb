@@ -10,7 +10,8 @@ class UrlsController < ApplicationController
       render js: "document.getElementById('short_url_box').classList.remove('d-none');
         document.getElementById('short_url_box').innerText='#{@url.url_short}';"
     else
-      p 'ERROR'
+      flash[:alert] = @url.errors.full_messages
+      redirect_to :root
     end
   end
 
