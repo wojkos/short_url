@@ -5,5 +5,5 @@
     = render 'shared/url_form', url: @url
   %div#short_url_box.d-none
     %p#short_url
-    %button{ onclick:"myFunction()" }
+    %button{ onclick:"copyLink()", class: 'btn btn-success' }
       COPY LINK

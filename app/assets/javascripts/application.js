@@ -10,24 +10,28 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery3
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
 
 function removeFlash() {
-    setTimeout(function(){
-        var pAlert =  document.getElementById('alert');        
-        if (pAlert.innerHTML.length >0) {
-            setTimeout(function(){ 
-                pAlert.remove();
-            }, 5000);
-        }
-    },2000);
+    if (document.getElementById('alert')) {
+        setTimeout(function(){
+            var pAlert =  document.getElementById('alert');        
+            if (pAlert.innerHTML.length >0) {
+                setTimeout(function(){ 
+                    pAlert.remove();
+                }, 5000);
+            }
+        },2000);
+    }
 };
 
-function myFunction() {
-    var range = document.body.createRange();
-    range.moveToElementText(document.getElementById("short_url"));
-    range.select().createTextRange();
-    document.execCommand("copy"); 
-  };
+function copyLink() {
+    var $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val($('#short_url').text()).select();
+    document.execCommand("copy");
+    $temp.remove();
+}
