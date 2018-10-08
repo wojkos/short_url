@@ -11,7 +11,12 @@ RSpec.describe Url, type: :model do
     it { should_not allow_value(not_valid_case).for(:url_orginal) }
   end
 
-  valid_cases = ['http://google.com', 'https://gazeta.pl', 'https://www.youtube.com/watch?v=QRxH-II0OsA', 'http://master.guru']
+  valid_cases = [
+    'http://google.com',
+    'https://gazeta.pl',
+    'https://www.youtube.com/watch?v=QRxH-II0OsA',
+    'http://master.guru'
+  ]
   valid_cases.each do |valid_case|
     it { should allow_value(valid_case).for(:url_orginal) }
   end
