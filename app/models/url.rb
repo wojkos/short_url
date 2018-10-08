@@ -3,7 +3,7 @@ class Url < ApplicationRecord
     
     validates :url_orginal, presence: true
     validates :url_orginal, url: true
-
+    
     before_create :generate_short_url
 
     def new_link?
@@ -28,4 +28,5 @@ class Url < ApplicationRecord
         end
         self.url_short = short_url
     end
+
 end
